@@ -1,0 +1,91 @@
+cabal-version: 2.4
+
+name: hw4
+version: 0.0.0.1
+synopsis: Homework 2: CS 457/557 Functional Programming, Winter 2022
+homepage: https://canvas.pdx.edu/courses/14714
+license: BSD-3-Clause
+license-file: LICENSE
+author: Katie Casamento
+maintainer: cas28@pdx.edu
+copyright: (c) 2022 Katie Casamento
+category: Education
+
+library
+  exposed-modules: TicTacToe
+  hs-source-dirs: src
+  default-language: Haskell2010
+
+  default-extensions:
+    DefaultSignatures,
+    ExplicitForAll,
+    FlexibleInstances,
+    GADTSyntax,
+    GeneralizedNewtypeDeriving,
+    ImportQualifiedPost,
+    InstanceSigs,
+    KindSignatures,
+    ScopedTypeVariables,
+    TypeApplications,
+    TypeSynonymInstances
+
+  build-depends:
+    base >=4.11 && <5,
+    containers >=0.6.4.1 && <0.7,
+    multiset >=0.3.4.3 && <0.4,
+    safe >= 0.3.19 && <0.4,
+    set-monad >= 0.3.0.0 && <0.4
+
+  ghc-options:
+    -fprint-explicit-foralls
+    -fwarn-incomplete-patterns
+    -fwarn-incomplete-uni-patterns
+    -Werror
+    -O2
+
+executable hw4
+    main-is: Main.hs
+    hs-source-dirs: app
+    default-language: Haskell2010
+
+    build-depends:
+      base >=4.11 && <5,
+      hw4
+
+    ghc-options:
+      -fwarn-incomplete-patterns
+      -fwarn-incomplete-uni-patterns
+      -Werror
+      -O2
+
+test-suite spec
+  type: exitcode-stdio-1.0
+  default-language: Haskell2010
+  hs-source-dirs: test
+  main-is: Spec.hs
+
+  default-extensions:
+    DeriveGeneric,
+    DerivingVia,
+    FlexibleInstances,
+    ImportQualifiedPost,
+    LambdaCase,
+    MultiParamTypeClasses,
+    ScopedTypeVariables,
+    StandaloneDeriving
+
+  build-depends:
+    base >=4.11 && <5, hw4,
+    containers >=0.6.4.1 && <0.7,
+    deepseq >=1.4.5.0 && <1.5,
+    hspec-core >=2.8.5 && <3.0,
+    generic-arbitrary >=0.2.0 && <0.3,
+    multiset >=0.3.4.3 && <0.4,
+    QuickCheck >=2.14.2 && <2.15,
+    set-monad >= 0.3.0.0 && <0.4
+
+  ghc-options:
+    -fwarn-incomplete-patterns
+    -fwarn-incomplete-uni-patterns
+    -Werror
+    -O2
